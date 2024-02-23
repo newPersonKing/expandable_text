@@ -11,37 +11,37 @@ typedef StringCallback = void Function(String value);
 
 class ExpandableText extends StatefulWidget {
   const ExpandableText(
-    this.text, {
-    Key? key,
-    required this.expandText,
-    this.collapseText,
-    this.expanded = false,
-    this.onExpandedChanged,
-    this.onLinkTap,
-    this.linkColor,
-    this.linkEllipsis = true,
-    this.linkStyle,
-    this.prefixText,
-    this.prefixStyle,
-    this.onPrefixTap,
-    this.urlStyle,
-    this.onUrlTap,
-    this.hashtagStyle,
-    this.onHashtagTap,
-    this.mentionStyle,
-    this.onMentionTap,
-    this.expandOnTextTap = false,
-    this.collapseOnTextTap = false,
-    this.style,
-    this.textDirection,
-    this.textAlign,
-    this.textScaleFactor,
-    this.maxLines = 2,
-    this.animation = false,
-    this.animationDuration,
-    this.animationCurve,
-    this.semanticsLabel,
-  })  : assert(maxLines > 0),
+      this.text, {
+        Key? key,
+        required this.expandText,
+        this.collapseText,
+        this.expanded = false,
+        this.onExpandedChanged,
+        this.onLinkTap,
+        this.linkColor,
+        this.linkEllipsis = true,
+        this.linkStyle,
+        this.prefixText,
+        this.prefixStyle,
+        this.onPrefixTap,
+        this.urlStyle,
+        this.onUrlTap,
+        this.hashtagStyle,
+        this.onHashtagTap,
+        this.mentionStyle,
+        this.onMentionTap,
+        this.expandOnTextTap = false,
+        this.collapseOnTextTap = false,
+        this.style,
+        this.textDirection,
+        this.textAlign,
+        this.textScaleFactor,
+        this.maxLines = 2,
+        this.animation = false,
+        this.animationDuration,
+        this.animationCurve,
+        this.semanticsLabel,
+      })  : assert(maxLines > 0),
         super(key: key);
 
   final String text;
@@ -150,12 +150,12 @@ class ExpandableTextState extends State<ExpandableText>
         widget.linkStyle?.color ??
         Theme.of(context).colorScheme.secondary;
     final linkTextStyle =
-        effectiveTextStyle!.merge(widget.linkStyle).copyWith(color: linkColor);
+    effectiveTextStyle!.merge(widget.linkStyle).copyWith(color: linkColor);
 
     final prefixText =
-        widget.prefixText != null && widget.prefixText!.isNotEmpty
-            ? '${widget.prefixText} '
-            : '';
+    widget.prefixText != null && widget.prefixText!.isNotEmpty
+        ? '${widget.prefixText} '
+        : '';
 
     final link = TextSpan(
       children: [
@@ -191,7 +191,7 @@ class ExpandableTextState extends State<ExpandableText>
 
     final text = _textSegments.isNotEmpty
         ? TextSpan(
-            children: _buildTextSpans(_textSegments, effectiveTextStyle, null))
+        children: _buildTextSpans(_textSegments, effectiveTextStyle, null))
         : TextSpan(text: widget.text);
 
     final content = TextSpan(
@@ -238,26 +238,26 @@ class ExpandableTextState extends State<ExpandableText>
                   prefixText.length;
 
           final recognizer =
-              (_expanded ? widget.collapseOnTextTap : widget.expandOnTextTap)
-                  ? _linkTapGestureRecognizer
-                  : null;
+          (_expanded ? widget.collapseOnTextTap : widget.expandOnTextTap)
+              ? _linkTapGestureRecognizer
+              : null;
 
           final text = _textSegments.isNotEmpty
               ? TextSpan(
-                  children: _buildTextSpans(
-                      _expanded
-                          ? _textSegments
-                          : parseText(
-                              widget.text.substring(0, max(endOffset, 0))),
-                      effectiveTextStyle!,
-                      recognizer),
-                )
+            children: _buildTextSpans(
+                _expanded
+                    ? _textSegments
+                    : parseText(
+                    widget.text.substring(0, max(endOffset, 0))),
+                effectiveTextStyle!,
+                recognizer),
+          )
               : TextSpan(
-                  text: _expanded
-                      ? widget.text
-                      : widget.text.substring(0, max(endOffset, 0)),
-                  recognizer: recognizer,
-                );
+            text: _expanded
+                ? widget.text
+                : widget.text.substring(0, max(endOffset, 0)),
+            recognizer: recognizer,
+          );
 
           textSpan = TextSpan(
             style: effectiveTextStyle,
